@@ -4,38 +4,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ice Core CO₂ Story</title>
-
   <link rel="stylesheet" href="style.css" />
-
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://unpkg.com/intersection-observer"></script>
   <script src="https://unpkg.com/scrollama"></script>
 </head>
-
 <body>
   <main>
-    <section id="scrolly">
-      <div id="scrolly-text">
-        <div class="step" data-step="0">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Full view.</p>
-        </div>
-        <div class="step" data-step="1">
-          <p>Lorem ipsum dolor sit amet, consectetur. Zoom to the inhale.</p>
-        </div>
-        <div class="step" data-step="2">
-          <p>Lorem ipsum dolor sit amet. Zoom to the exhale.</p>
-        </div>
-        <div class="step" data-step="3">
-          <p>Lorem ipsum dolor sit amet. Return to full view.</p>
-        </div>
+    <section id="intro-slides">
+      <button id="left-arrow" class="arrow-btn" style="display:none;">&#8592;</button>
+      <button id="right-arrow" class="arrow-btn">&#8594;</button>
+      <div id="intro-grid"></div>
+      <div class="slide active" data-step="0">
+        <h1>CO₂ Bubbles in Ice Cores</h1>
+        <h3>By Keanu, Trinity, Hasaam, and Maya</h3>
+      </div>
+      <div class="slide" data-step="1">
+        <h2>Earth’s Atmosphere</h2>
+        <p id="dot-count-text">This screen shows ____ gray dots…</p>
+      </div>
+      <div class="slide" data-step="2">
+        <h2>Air Trapped in Glacial Ice</h2>
+        <p>A tiny fraction of atmospheric air is sealed inside glacial ice.</p>
       </div>
 
+      <div class="slide" data-step="3">
+        <h2>The CO₂ Bubbles In Ice</h2>
+        <p>Only a tiny fraction of air trapped in ice is CO₂.  
+           This single dot represents the CO₂ in ice cores scientists analyze.</p>
+      </div>
+      <div class="slide" data-step="4">
+        <h2>Ice Core Data Is Powerful</h2>
+        <p>This single red dot can reveals Earth’s climate history. It also can help us predict future climate</p>
+      </div>
+    </section>
+    <section id="post-intro">
+      <h1>CO₂ Levels Over 155,000 Years</h1>
+      <p>
+        Now that we've seen how air becomes trapped in glacial ice,
+        let’s explore what scientists can learn from those ancient bubbles.
+      </p>
+    </section>
+    <section id="scrolly">
+      <div id="scrolly-text">
+        <div class="step" data-step="0"><p>Full view.</p></div>
+        <div class="step" data-step="1"><p>Zoom to inhale.</p></div>
+        <div class="step" data-step="2"><p>Zoom to exhale.</p></div>
+        <div class="step" data-step="3"><p>Return to full view.</p></div>
+      </div>
       <div id="scrolly-graphic">
         <div id="chart"></div>
       </div>
     </section>
   </main>
-
+  <script src="intro.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
