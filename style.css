@@ -1,5 +1,14 @@
+@font-face {
+    font-family: 'Njal';
+    src: url('/font/NjalBold.woff2') format('woff2'),
+        url('/font/NjalBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: 'Njal', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -116,10 +125,123 @@ main {
   max-width: 700px;
   margin: 0 auto;
 }
+.wrapper{
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, #ffffff 5%, #cae9ff 50%, #ccdeff);
+  position: absolute;
+  z-index: -1;
+}
+
+/* outer bubble*/
+.wrapper div{
+  height: 30px;
+  width: 30px;
+  border: 2px solid  #77c4fb;
+  border-radius: 50px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  animation: animate 4s linear infinite;
+}
+
+/* inner bubble dot*/
+div .bub{
+  height: 5px;
+  width: 5px;
+  border-radius: 50px;
+  background:  #77c4fb;
+  position: absolute;
+  top: 20%;
+  right: 20%;
+}
+
+/* bubble animation and location */
+.wrapper div:nth-child(1){
+  top: 5%;
+  left: 20%;
+  animation: animate 8s linear infinite;
+}
+
+.wrapper div:nth-child(2){
+  top: 15%;
+  left: 30%;
+  animation: animate 4s linear infinite;
+}
+
+.wrapper div:nth-child(3){
+  top: 60%;
+  left: 4%;
+  animation: animate 5s linear infinite;
+}
+
+.wrapper div:nth-child(4){
+  top: 32%;
+  left: 24%;
+  animation: animate 6s linear infinite;
+}
+
+.wrapper div:nth-child(5){
+  top: 37%;
+  left: 5%;
+  animation: animate 7s linear infinite;
+}
+
+.wrapper div:nth-child(6){
+  top: 84%;
+  left: 30%;
+  animation: animate 3s linear infinite;
+}
+
+.wrapper div:nth-child(7){
+  top: 46%;
+  left: 32%;
+  animation: animate 5s linear infinite;
+}
+
+.wrapper div:nth-child(8){
+  top: 55%;
+  left: 8%;
+  animation: animate 4s linear infinite;
+}
+
+.wrapper div:nth-child(9){
+  top: 24%;
+  left: 2%;
+  animation: animate 3s linear infinite;
+}
+
+.wrapper div:nth-child(10){
+  top: 82%;
+  left: 2%;
+  animation: animate 7s linear infinite;
+}
+
+.wrapper div:nth-child(11){
+  top: 76%;
+  left: 22%;
+  animation: animate 6s linear infinite;
+}
+
+.wrapper div:nth-child(11){
+  top: 96%;
+  left: 25%;
+  animation: animate 5s linear infinite;
+}
+
+@keyframes animate{
+  0%{
+    transform: scale(0) translateY(0) rotate(70deg);
+  }
+  100%{
+    transform: scale(1.3) translateY(-100px) rotate(360deg);
+  }
+}
+
 #scrolly {
   position: relative;
   display: flex;
-  max-width: 1200px;
+  width: 100vw;
   margin: 10vh auto 0 auto;
   padding: 0;
 }
@@ -127,14 +249,17 @@ main {
   width: 33%;
   padding: 2rem;
 }
+
 .step {
   margin: 0 0 60vh 0;
   padding: 20px;
   opacity: 0.4;
+  background: rgba(255, 255, 255, 0.5);
 }
 .step.is-active {
   opacity: 1;
   border-left: 4px solid #444;
+  background: rgba(255, 255, 255, 0.5);
 }
 #scrolly-graphic {
   position: sticky;
@@ -148,6 +273,7 @@ main {
 #chart {
   width: 100%;
   height: 100%;
+  background: rgb(255, 255, 255, .3);
 }
 #floating-co2-dot {
   position: absolute;
