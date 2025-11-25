@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ice Core CO₂ Story</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/intersection-observer"></script>
+  <script src="https://unpkg.com/scrollama"></script>
+</head>
+
+<body>
+  <main>
+    <section id="scrolly">
+      <div id="scrolly-text">
+        <div class="step" data-step="0">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Full view.</p>
+        </div>
+        <div class="step" data-step="1">
+          <p>Lorem ipsum dolor sit amet, consectetur. Zoom to the inhale.</p>
+        </div>
+        <div class="step" data-step="2">
+          <p>Lorem ipsum dolor sit amet. Zoom to the exhale.</p>
+        </div>
+        <div class="step" data-step="3">
+          <p>Lorem ipsum dolor sit amet. Return to full view.</p>
+        </div>
+      </div>
+
+      <div id="scrolly-graphic">
+        <div id="chart"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
