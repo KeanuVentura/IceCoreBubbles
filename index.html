@@ -60,5 +60,10 @@
   </main>
   <script src="intro.js"></script>
   <script src="script.js"></script>
+  <script>
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
+  </script>
 </body>
 </html>
