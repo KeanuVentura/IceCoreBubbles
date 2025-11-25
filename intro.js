@@ -1,3 +1,4 @@
+const floatingDot = document.querySelector("#floating-co2-dot");
 let currentStep = 0;
 
 const slides = document.querySelectorAll(".slide");
@@ -7,16 +8,12 @@ const leftArrow = document.querySelector("#left-arrow");
 const rightArrow = document.querySelector("#right-arrow");
 
 const introGrid = d3.select("#intro-grid");
-const overlayDot = document.querySelector("#single-dot-overlay");
 
 let TRAPPED_SET = new Set();
 let CO2_INDEX = null;
 
 document.body.classList.add("noscroll");
 
-// ----------------------------
-// BUILD DOT GRID
-// ----------------------------
 function buildGrid() {
   introGrid.selectAll("*").remove();
 
@@ -63,13 +60,9 @@ function defineSubsets(cols, rows) {
   CO2_INDEX = Math.floor((H / 2) * cols + W / 2);
 }
 
-// ----------------------------
-// DOT STATE LOGIC PER STEP
-// ----------------------------
 function applyDotState(step) {
   const dots = introGrid.selectAll(".co2-dot");
 
-  // reset all
   dots
     .classed("trapped", false)
     .classed("co2-single", false)
@@ -84,29 +77,14 @@ function applyDotState(step) {
     dots.classed("co2-single", (d, i) => i === CO2_INDEX);
   }
 
-  // ⭐ Slide 4: keep only the CO₂ dot
   if (step === 4) {
-    // fade out non-CO2 dots smoothly
-    dots
-      .filter((d, i) => i !== CO2_INDEX)
-      .transition()
-      .duration(600)
-      .style("opacity", 0);
-  
-    // keep CO2 dot as-is, no animation or change
-    dots
-      .filter((d, i) => i === CO2_INDEX)
-      .style("opacity", 1)
-      .classed("co2-single", true);
+    dots.style("opacity", 0);
+    dots.classed("co2-single", false);
   }
 }
 
-// ----------------------------
-// SLIDE TRANSITIONS
-// ----------------------------
 function showStep(step) {
   slides.forEach(s => s.classList.remove("active"));
-
   slides[step].classList.add("active");
 
   applyDotState(step);
@@ -114,15 +92,55 @@ function showStep(step) {
   leftArrow.style.display = step === 0 ? "none" : "flex";
   rightArrow.style.display = step === slides.length - 1 ? "none" : "flex";
 
-  // ⭐ Unlock scrolling on final slide
   if (step === 4) {
     document.body.classList.remove("noscroll");
+
+    const dots = introGrid.selectAll(".co2-dot").nodes();
+    const realDot = dots[CO2_INDEX];
+    const rect = realDot.getBoundingClientRect();
+
+    const startX = rect.left + rect.width / 2 + window.scrollX;
+    const startY = rect.top + rect.height / 2 + window.scrollY;
+
+    floatingDot.style.left = startX + "px";
+    floatingDot.style.top = startY + "px";
+    floatingDot.style.opacity = 1;
+
+    introGrid.style.opacity = 0;
+
+    floatingDot.classList.remove("bounce-3", "bounce-3b");
+    void floatingDot.offsetWidth; 
+
+    const landingY = window.innerHeight - 80;
+    const landingX = window.innerWidth / 2;
+
+    setTimeout(() => {
+
+      floatingDot.style.top = landingY + "px";
+      floatingDot.style.left = landingX + "px";
+
+      setTimeout(() => {
+        floatingDot.classList.add("bounce-3");
+
+        setTimeout(() => {
+          floatingDot.classList.remove("bounce-3");
+          void floatingDot.offsetWidth; // reflow
+          floatingDot.classList.add("bounce-3b");
+        }, 3000);
+
+      }, 600);
+
+    }, 5000);
+
+  } else {
+    introGrid.style.opacity = 1;
+    floatingDot.style.opacity = 0;
+
+    floatingDot.classList.remove("bounce-3", "bounce-3b");
+    void floatingDot.offsetWidth;
   }
 }
 
-// ----------------------------
-// BUTTON LOGIC
-// ----------------------------
 rightArrow.addEventListener("click", () => {
   if (currentStep < slides.length - 1) {
     currentStep++;
@@ -137,8 +155,5 @@ leftArrow.addEventListener("click", () => {
   }
 });
 
-// ----------------------------
-// INITIALIZATION
-// ----------------------------
 buildGrid();
 window.addEventListener("resize", buildGrid);

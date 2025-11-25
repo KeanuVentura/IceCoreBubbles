@@ -11,7 +11,6 @@ let dataByCore = {};
 let margin = { top: 40, right: 40, bottom: 50, left: 60 };
 let legendPadding = 20;
 
-// Load CSV and group by core
 d3.csv("data/dataset1.csv").then(rawData => {
   const data = rawData.map(d => ({
     depth: +d.depth,
@@ -23,14 +22,12 @@ d3.csv("data/dataset1.csv").then(rawData => {
   dataByCore = d3.group(data, d => d.core);
 });
 
-// Optional helper if needed later
 function getPathLength(pathD) {
   const tempPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
   tempPath.setAttribute("d", pathD);
   return tempPath.getTotalLength();
 }
 
-// Draw chart once when scrolly section comes into view
 const chartObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (
@@ -235,7 +232,6 @@ function moveLegend(position) {
   }
 }
 
-// Scrollama for chart zoom
 const scroller = scrollama();
 
 function handleStepEnter(response) {

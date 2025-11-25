@@ -3,25 +3,19 @@ body {
   margin: 0;
   padding: 0;
 }
-
 body.noscroll {
   overflow: hidden;
   height: 100vh;
 }
-
 main {
   width: 100%;
 }
-
-/* INTRO SLIDES + DOT GRID */
-
 #intro-slides {
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
 }
-
 #intro-grid {
   position: absolute;
   inset: 0;
@@ -32,7 +26,6 @@ main {
   z-index: 1;
   transition: opacity 0.6s ease;
 }
-
 .co2-dot {
   width: 100%;
   aspect-ratio: 1/1;
@@ -40,17 +33,14 @@ main {
   background-color: #d9d9d9;
   transition: background-color 300ms, transform 300ms, box-shadow 300ms;
 }
-
 .co2-dot.trapped {
   background-color: #8ecae6;
 }
-
 .co2-dot.co2-single {
     background-color: #d00000;
     box-shadow: 0 0 0 2px white, 0 0 12px rgba(0,0,0,0.3);
     opacity: 1 !important;
   }
-
 .slide {
   position: absolute;
   inset: 0;
@@ -67,22 +57,18 @@ main {
   text-align: center;
   transition: opacity 0.6s ease;
 }
-
 .slide.active {
   opacity: 1;
   pointer-events: auto;
 }
-
 .slide h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
 }
-
 .slide h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
-
 .arrow-btn {
   position: absolute;
   top: 50%;
@@ -105,42 +91,31 @@ main {
   z-index: 30;
   transition: opacity 0.2s ease;
 }
-
 .arrow-btn:hover {
   opacity: 1;
 }
-
 #left-arrow {
   left: 2%;
 }
-
 #right-arrow {
   right: 2%;
 }
-
-/* POST-INTRO BRIDGE SECTION */
-
 #post-intro {
   max-width: 900px;
   margin: 0 auto;
   padding: 12vh 2rem 20vh;
   text-align: center;
 }
-
 #post-intro h1 {
   font-size: 2.6rem;
   margin-bottom: 1rem;
 }
-
 #post-intro p {
   font-size: 1.3rem;
   line-height: 1.6;
   max-width: 700px;
   margin: 0 auto;
 }
-
-/* SCROLLING CHART SECTION */
-
 #scrolly {
   position: relative;
   display: flex;
@@ -148,23 +123,19 @@ main {
   margin: 10vh auto 0 auto;
   padding: 0;
 }
-
 #scrolly-text {
   width: 33%;
   padding: 2rem;
 }
-
 .step {
   margin: 0 0 60vh 0;
   padding: 20px;
   opacity: 0.4;
 }
-
 .step.is-active {
   opacity: 1;
   border-left: 4px solid #444;
 }
-
 #scrolly-graphic {
   position: sticky;
   top: 0;
@@ -174,8 +145,34 @@ main {
   justify-content: center;
   align-items: center;
 }
-
 #chart {
   width: 100%;
   height: 100%;
+}
+#floating-co2-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d00000;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: top 0.6s ease-out, left 0.6s ease-out, opacity 0.5s ease;
+
+  top: var(--start-top);
+  left: var(--start-left);
+  transform: translate(-50%, -50%);
+}
+@keyframes co2Bounce {
+  0%   { transform: translate(-50%, -50%) translateY(0); }
+  30%  { transform: translate(-50%, -50%) translateY(-14px); }
+  60%  { transform: translate(-50%, -50%) translateY(0); }
+  100% { transform: translate(-50%, -50%) translateY(0); }
+}
+.bounce-3 {
+  animation: co2Bounce 0.5s ease-in-out 3;
+}
+.bounce-3b {
+  animation: co2Bounce 0.6s ease-in-out 3;
 }
