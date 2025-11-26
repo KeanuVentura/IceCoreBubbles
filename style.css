@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Njal';
-    src: url('/font/NjalBold.woff2') format('woff2'),
-        url('/font/NjalBold.woff') format('woff');
+    src: url('font/NjalBold.woff2') format('woff2'),
+        url('font/NjalBold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -120,6 +120,22 @@ main {
   margin-bottom: 1rem;
 }
 #post-intro p {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+#write-up {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 12vh 2rem 20vh;
+  text-align: center;
+}
+#write-up h1 {
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+}
+#write-up p {
   font-size: 1.3rem;
   line-height: 1.6;
   max-width: 700px;
