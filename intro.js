@@ -17,18 +17,21 @@ document.body.classList.add("noscroll");
 function buildGrid() {
   introGrid.selectAll("*").remove();
 
-  const container = document.getElementById("intro-grid");
-  const DOT = 6;
-  const GAP = 3;
+  const TOTAL = 18240;
 
-  const w = container.clientWidth;
-  const h = container.clientHeight;
+  // Compute a pleasing grid shape
+  const ASPECT = window.innerWidth / window.innerHeight;
+  const COLS = Math.round(Math.sqrt(TOTAL * ASPECT));
+  const ROWS = Math.ceil(TOTAL / COLS);
 
-  const COLS = Math.floor(w / (DOT + GAP));
-  const ROWS = Math.floor(h / (DOT + GAP));
-  const TOTAL = COLS * ROWS;
+  // Compute dot size dynamically so grid fits screen
+  const GAP = 2; // keep small
+  const dotWidth = (window.innerWidth - GAP * COLS) / COLS;
+  const dotHeight = (window.innerHeight - GAP * ROWS) / ROWS;
+  const DOT = Math.min(dotWidth, dotHeight);
 
   introGrid.style("grid-template-columns", `repeat(${COLS}, ${DOT}px)`);
+  introGrid.style("grid-auto-rows", `${DOT}px`);
   introGrid.style("gap", `${GAP}px`);
 
   introGrid
@@ -36,15 +39,19 @@ function buildGrid() {
     .data(d3.range(TOTAL))
     .enter()
     .append("div")
-    .attr("class", "co2-dot");
+    .attr("class", "co2-dot")
+    .style("width", `${DOT}px`)
+    .style("height", `${DOT}px`);
 
   dotCountText.textContent =
     `This screen shows ${TOTAL.toLocaleString()} gray dots—each representing a share of Earth’s atmosphere.`;
 
   defineSubsets(COLS, ROWS);
   applyDotState(0);
+  console.log("Calculated dot count:", TOTAL);
+  console.log("Rendered dot count:", introGrid.selectAll(".co2-dot").size());
 }
-
+  
 function defineSubsets(cols, rows) {
   const W = Math.floor(cols * 0.15);
   const H = Math.floor(rows * 0.15);
@@ -130,7 +137,7 @@ function showStep(step) {
 
       }, 600);
 
-    }, 5000);
+    }, 3000);
 
   } else {
     introGrid.style.opacity = 1;
