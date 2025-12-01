@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: 'Njal', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -267,10 +267,12 @@ div .bub{
   padding: 0;
 }
 #scrolly-text {
-  width: 33%;
+  flex: 0 0 40%;
+  max-width: 40%;
+  min-width: 40%;
   padding: 2rem;
+  box-sizing: border-box;
 }
-
 .step {
   margin: 0 0 60vh 0;
   padding: 20px;
@@ -285,7 +287,9 @@ div .bub{
 #scrolly-graphic {
   position: sticky;
   top: 0;
-  width: 67%;
+  flex: 0 0 60%;
+  max-width: 60%;
+  min-width: 60%;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -323,4 +327,8 @@ div .bub{
 .bounce-3b {
   animation: co2Bounce 0.6s ease-in-out 3;
 }
-
+#scrolly-text p,
+#scrolly-text a {
+  font-size: 1.4rem;
+  line-height: 1.5;
+}

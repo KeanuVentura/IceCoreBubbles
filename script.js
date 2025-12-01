@@ -41,9 +41,9 @@ const chartObserver = new IntersectionObserver(entries => {
       initChart();
     }
   });
-}, { threshold: 0.33 });
+}, { threshold: 0.95 });
 
-chartObserver.observe(document.querySelector("#scrolly"));
+chartObserver.observe(document.querySelector("#scrolly-graphic"));
 
 function initChart() {
   chartContainer.selectAll("*").remove();
@@ -51,7 +51,7 @@ function initChart() {
   const containerWidth = chartContainer.node().clientWidth;
   const containerHeight = chartContainer.node().clientHeight;
 
-  width = containerWidth * 0.9;
+  width = containerWidth * 0.8;
   height = containerHeight * 0.8;
 
   svg = chartContainer
