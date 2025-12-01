@@ -64,7 +64,13 @@ function defineSubsets(cols, rows) {
     }
   }
 
-  CO2_INDEX = Math.floor((H / 2) * cols + W / 2);
+  const relX = 0.5;
+  const relY = 0.5;
+
+  const co2_col = Math.floor(W * relX);
+  const co2_row = Math.floor(H * relY);
+
+  CO2_INDEX = co2_row * cols + co2_col;
 }
 
 function applyDotState(step) {
