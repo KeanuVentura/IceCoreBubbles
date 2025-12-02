@@ -99,7 +99,7 @@ function initChart() {
         .attr("stroke-dasharray", `${totalLength} ${totalLength}`)
         .attr("stroke-dashoffset", totalLength)
         .transition()
-        .duration(3000)
+        .duration(2000)
         .ease(d3.easeLinear)
         .attr("stroke-dashoffset", 0)
         .on("end", () => {

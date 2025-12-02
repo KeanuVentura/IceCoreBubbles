@@ -118,6 +118,9 @@ main {
   margin: 0 auto;
   padding: 12vh 2rem 20vh;
   text-align: center;
+
+  position: relative;
+  overflow: hidden;
 }
 #post-intro h1 {
   font-size: 2.6rem;
