@@ -335,3 +335,37 @@ div .bub{
   font-size: 1.4rem;
   line-height: 1.5;
 }
+
+#scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.95rem;
+  color: #555;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  z-index: 40; /* above grid, below floating dot if you want */
+}
+
+#scroll-hint.visible {
+  opacity: 0.9;
+  transform: translateX(-50%) translateY(0);
+}
+
+.scroll-hint-arrow {
+  font-size: 1.2rem;
+  animation: scrollArrowBounce 1.4s ease-in-out infinite;
+}
+
+@keyframes scrollArrowBounce {
+  0%   { transform: translateY(0); }
+  40%  { transform: translateY(4px); }
+  80%  { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}

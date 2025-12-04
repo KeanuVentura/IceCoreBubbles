@@ -96,7 +96,14 @@ function applyDotState(step) {
   }
 }
 
+const scrollHint = document.querySelector("#scroll-hint");
+
+
 function showStep(step) {
+
+    if (scrollHint) {
+    scrollHint.classList.remove("visible");
+  }
   slides.forEach(s => s.classList.remove("active"));
   slides[step].classList.add("active");
 
@@ -144,6 +151,12 @@ function showStep(step) {
       }, 600);
 
     }, 3000);
+    
+    setTimeout(() => {
+      if (scrollHint) {
+        scrollHint.classList.add("visible");
+      }
+    }, 3800);
 
   } else {
     introGrid.style.opacity = 1;
