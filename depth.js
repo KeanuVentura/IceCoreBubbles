@@ -207,7 +207,7 @@ playBtn.addEventListener("click", () => {
 ================================ */
 function handleTooltipMove(event) {
   const svgNode = depthSvg.node();
-  const [mx, my] = d3.pointer(event, svgNode);
+  const [mx, my] = d3.pointer(event, svgNode);  // SVG space
 
   const data = groupedDepth.get(currentCore);
   if (!data) return;
@@ -218,8 +218,8 @@ function handleTooltipMove(event) {
   data.forEach(d => {
     const sx = depthX(d.co2);
     const sy = depthY(d.depth);
-    const dist = Math.hypot(mx - sx, my - sy);
 
+    const dist = Math.hypot(mx - sx, my - sy);
     if (dist < minDist) {
       minDist = dist;
       closest = d;
@@ -233,16 +233,16 @@ function handleTooltipMove(event) {
 
   tooltip.style.opacity = 1;
 
-  const tooltipWidth = tooltip.offsetWidth;
+  let leftPos = event.clientX + 15;
+  const tipWidth = tooltip.offsetWidth;
   const vw = window.innerWidth;
 
-  let leftPos = event.clientX + 15;
-  if (event.clientX + tooltipWidth + 40 > vw) {
-    leftPos = event.clientX - tooltipWidth - 15;
+  if (event.clientX + tipWidth + 40 > vw) {
+    leftPos = event.clientX - tipWidth - 15;
   }
 
-  tooltip.style.left = leftPos + "px";
-  tooltip.style.top = event.clientY + 15 + "px";
+  tooltip.style.left = `${leftPos}px`;
+  tooltip.style.top = `${event.clientY + 15}px`;
 
   tooltip.innerHTML = `
     <strong>Depth:</strong> ${closest.depth.toFixed(1)} m<br>

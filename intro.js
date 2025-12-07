@@ -44,7 +44,7 @@ function buildGrid() {
     .style("height", `${DOT}px`);
 
   dotCountText.textContent =
-    `This screen shows ${TOTAL.toLocaleString()} gray dots—each representing a share of Earth’s atmosphere.`;
+    `This screen shows ${TOTAL.toLocaleString()} gray dots, each representing a share of Earth’s atmosphere.`;
 
   defineSubsets(COLS, ROWS);
   applyDotState(0);
@@ -100,10 +100,10 @@ const scrollHint = document.querySelector("#scroll-hint");
 
 
 function showStep(step) {
-
-    if (scrollHint) {
+  if (scrollHint) {
     scrollHint.classList.remove("visible");
   }
+
   slides.forEach(s => s.classList.remove("active"));
   slides[step].classList.add("active");
 
@@ -129,13 +129,12 @@ function showStep(step) {
     introGrid.style.opacity = 0;
 
     floatingDot.classList.remove("bounce-3", "bounce-3b");
-    void floatingDot.offsetWidth; 
+    void floatingDot.offsetWidth;
 
     const landingY = window.innerHeight - 110;
     const landingX = window.innerWidth / 2;
 
     setTimeout(() => {
-
       floatingDot.style.top = landingY + "px";
       floatingDot.style.left = landingX + "px";
 
@@ -144,20 +143,19 @@ function showStep(step) {
 
         setTimeout(() => {
           floatingDot.classList.remove("bounce-3");
-          void floatingDot.offsetWidth; // reflow
+          void floatingDot.offsetWidth;
           floatingDot.classList.add("bounce-3b");
         }, 3000);
 
       }, 600);
 
     }, 3000);
-    
+
     setTimeout(() => {
       if (scrollHint) {
         scrollHint.classList.add("visible");
       }
-    }, 3800);
-
+    }, 5000);
   } else {
     introGrid.style.opacity = 1;
     floatingDot.style.opacity = 0;
@@ -165,6 +163,26 @@ function showStep(step) {
     floatingDot.classList.remove("bounce-3", "bounce-3b");
     void floatingDot.offsetWidth;
   }
+
+  updateProgressBar();
+
+  const progressBar = document.getElementById("slide-progress");
+
+  if (step === slides.length - 1) {
+    setTimeout(() => {
+      progressBar.classList.add("hidden");
+    }, 1800);
+  } else {
+    progressBar.classList.remove("hidden");
+  }
+}
+
+
+
+function updateProgressBar() {
+  const total = slides.length - 1;
+  const percent = (currentStep / total) * 100;
+  document.getElementById("slide-progress-fill").style.width = percent + "%";
 }
 
 rightArrow.addEventListener("click", () => {
@@ -181,5 +199,22 @@ leftArrow.addEventListener("click", () => {
   }
 });
 
+window.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight") {
+    if (currentStep < slides.length - 1) {
+      currentStep++;
+      showStep(currentStep);
+    }
+  }
+
+  if (e.key === "ArrowLeft") {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  }
+});
+
 buildGrid();
 window.addEventListener("resize", buildGrid);
+

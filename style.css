@@ -448,3 +448,32 @@ main {
   border: 1px solid #ccc;
   z-index: 10;
 }
+#slide-progress {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 50;
+}
+
+#slide-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: #023047;
+  transition: width 0.4s ease;
+}
+
+#slide-progress {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+#slide-progress.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
