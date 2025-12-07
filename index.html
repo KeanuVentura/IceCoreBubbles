@@ -45,7 +45,7 @@
   </section>
     </section>
     <section id="post-intro">
-      <h1>CO₂ Levels Over Hundreds of Thousands of Years</h1>
+      <h1>CO₂ Levels Over a Hundred Thousand Years</h1>
       <p>
         Now that we've seen how little air and specifically CO₂ becomes trapped in glacial ice,
         let’s explore what scientists can learn from the data.
@@ -115,6 +115,57 @@
         <div><span class="bub"></span></div>
       </div>
     </section>
+
+    <section id="post-chart">
+      <h1>A Vertical Look Inside the Ice Core</h1>
+      <p>
+        Now that we’ve seen how CO₂ changes over time at a large scale, let’s examine how CO₂ is preserved vertically inside a 
+        single ice core.
+      </p>
+    </section>
+
+    <section id="depth-explorer">
+      <div id="depth-explorer-container">
+    
+        <div id="depth-explorer-header">
+          <h2>Interactive Depth Explorer</h2>
+          <p>
+            Move the slider to travel deeper into the ice core.  
+            Switch between cores to compare CO₂ patterns.
+            You can also click and drag on the chart to select a region and view its average CO₂, depth, and age.
+          </p>
+        </div>
+    
+        <div id="depth-explorer-controls">
+          <button id="depth-play-btn">Play</button>
+          <label for="depth-slider">Depth:</label>
+          <input type="range" id="depth-slider" min="0" max="100" value="0" step="0.1">
+    
+          <label for="core-select">Core:</label>
+          <select id="core-select">
+            <option value="3" selected>Core 3</option>
+            <option value="4">Core 4</option>
+          </select>
+        </div>
+    
+        <div id="depth-chart-wrapper">
+          <svg id="depth-svg"></svg>
+        </div>
+
+        <div id="depth-tooltip"></div>
+    
+        <div id="depth-readout">
+          <p><strong>Depth:</strong> <span id="read-depth">—</span> m</p>
+          <p><strong>CO₂:</strong> <span id="read-co2">—</span> ppm</p>
+          <p><strong>Gas Age:</strong> <span id="read-age">—</span> years</p>
+        </div>
+
+        <div id="selection-stats"></div>
+        <button id="clear-selection">Clear Selection</button>
+    
+      </div>
+    </section>
+
     <section id="write-up">
       <h1>Write-up (Nov. 25)</h1>
       <p>
@@ -146,10 +197,7 @@
   </main>
   <script src="intro.js"></script>
   <script src="script.js"></script>
-  <script>
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    };
-  </script>
+  <script src="depth.js"></script>
 </body>
 </html>
+

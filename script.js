@@ -285,4 +285,3 @@ function zoomReset() {
   zoomFullView();
   moveLegend("bottom-right");
 }
-

@@ -131,7 +131,7 @@ function showStep(step) {
     floatingDot.classList.remove("bounce-3", "bounce-3b");
     void floatingDot.offsetWidth; 
 
-    const landingY = window.innerHeight - 80;
+    const landingY = window.innerHeight - 110;
     const landingX = window.innerWidth / 2;
 
     setTimeout(() => {
