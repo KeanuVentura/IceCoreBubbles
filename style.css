@@ -477,3 +477,18 @@ main {
   opacity: 0;
   pointer-events: none;
 }
+
+#drag-hint {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.55);
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  color: white;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+  z-index: 10;
+}

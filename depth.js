@@ -108,6 +108,14 @@ function initDepthChart() {
 
   svgEl.on("mousemove", handleTooltipMove);
   svgEl.on("mouseleave", () => tooltip.style.opacity = 0);
+
+  setTimeout(() => {
+    document.getElementById("drag-hint").style.opacity = 1;
+    setTimeout(() => {
+      document.getElementById("drag-hint").style.opacity = 0;
+    }, 2500);
+  }, 600);
+
 }
 
 /* ================================
@@ -356,3 +364,22 @@ coreSelect.addEventListener("change", e => {
   stopDepthPlayback();
   updateCore(+e.target.value);
 });
+
+let dragHintShown = false;
+
+const depthObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !dragHintShown) {
+      dragHintShown = true;
+
+      const hint = document.getElementById("drag-hint");
+      hint.style.opacity = 1;
+
+      setTimeout(() => {
+        hint.style.opacity = 0;
+      }, 12000);
+    }
+  });
+}, { threshold: 0.8 });
+
+depthObserver.observe(document.querySelector("#depth-explorer"));
