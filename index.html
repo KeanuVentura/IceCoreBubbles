@@ -29,7 +29,6 @@
         <h2>Air Trapped in Glacial Ice</h2>
         <p>A tiny fraction of atmospheric air is sealed inside glacial ice.</p>
       </div>
-
       <div class="slide" data-step="3">
         <h2>The CO₂ Bubbles In Ice</h2>
         <p>Only a tiny fraction of air trapped in ice is CO₂. <br>This single dot represents the CO₂ in ice cores scientists analyze.</p>
@@ -54,6 +53,7 @@
         let’s explore what scientists can learn from the data.
       </p>
     </section>
+
     <section id="scrolly">
       <div id="scrolly-text">
         <div class="step" data-step="0">
@@ -87,7 +87,6 @@
             into the atmosphere. Similarly, this rise is steady as it is driven by the ocean circulation changes as well as the
             retreating ice sheets. Ice core data reflects that CO₂ climbs sharply during this phase, representing a long breath
             outward that pushes the planet out of its glacial state. 
-
           </p>
         </div>
         <div class="step" data-step="3">
@@ -99,13 +98,11 @@
             But does it?
           </p>
         </div>
-        </div>
+      </div>
       <div id="scrolly-graphic">
         <div id="chart"></div>
       </div>
-      <!-- This wrapper is the background gradient-->
       <div class="wrapper">
-        <!--The bubbles in the background-->
         <div><span class="bub"></span></div>
         <div><span class="bub"></span></div>
         <div><span class="bub"></span></div>
@@ -120,7 +117,7 @@
         <div><span class="bub"></span></div>
       </div>
     </section>
-  <!--
+  
     <section id="post-chart">
       <h1>A Vertical Look Inside the Ice Core</h1>
       <p>
@@ -128,71 +125,72 @@
         single ice core.
       </p>
     </section>
--->
-<section id="depth-explorer">
-  
-  <!-- background bubbles -->
-  <div class="depth-bubbles">
-    <span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span>
-  </div>
 
-  <!-- centered content -->
-  <div class="depth-inner">
-    <div id="depth-explorer-container">
-
-      <div id="depth-explorer-header">
-        <h2>Interactive Depth Explorer</h2>
-        <p>
-          Move the slider to travel deeper into the ice core.  
-          Switch between cores to compare CO₂ patterns.
-          You can also click and drag on the chart to select a region and view
-          its average CO₂, depth, and age.
-        </p>
+    <section id="depth-explorer">
+      <div class="depth-bubbles">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
       </div>
 
-      <!-- your existing controls and SVG -->
-      <div id="depth-explorer-controls">
-        <button id="depth-play-btn">Play</button>
-        <label for="depth-slider">Depth:</label>
-        <input type="range" id="depth-slider" min="0" max="100" value="0" step="0.1">
+      <div class="depth-inner">
+        <div id="depth-explorer-container">
 
-        <label for="core-select">Core:</label>
-        <select id="core-select">
-          <option value="3" selected>Core 3</option>
-          <option value="4">Core 4</option>
-        </select>
+          <div id="depth-explorer-header">
+            <h2>Interactive Depth Explorer</h2>
+            <p>
+              Move the slider to travel deeper into the ice core.  
+              Switch between cores to compare CO₂ patterns.
+              You can also click and drag on the chart to select a region and view
+              its average CO₂, depth, and age.
+            </p>
+          </div>
+
+          <div id="depth-explorer-controls">
+            <button id="depth-play-btn">Play</button>
+            <label for="depth-slider">Depth:</label>
+            <input type="range" id="depth-slider" min="0" max="100" value="0" step="0.1">
+            <label for="core-select">Core:</label>
+            <select id="core-select">
+              <option value="3" selected>Core 3</option>
+              <option value="4">Core 4</option>
+            </select>
+          </div>
+
+          <div id="depth-chart-wrapper">
+            <div id="drag-hint">Click & drag to select a region</div>
+            <svg id="depth-svg"></svg>
+          </div>
+
+          <div id="depth-tooltip"></div>
+
+          <div id="depth-readout">
+            <p><strong>Depth:</strong> <span id="read-depth">—</span> m</p>
+            <p><strong>CO₂:</strong> <span id="read-co2">—</span> ppm</p>
+            <p><strong>Gas Age:</strong> <span id="read-age">—</span> years</p>
+          </div>
+
+          <div id="selection-row">
+            <div id="selection-stats"></div>
+            <button id="clear-selection">Clear Selection</button>
+          </div>
+
+        </div>
       </div>
+    </section>
 
-      <div id="depth-chart-wrapper">
-        <div id="drag-hint">Click & drag to select a region</div>
-        <svg id="depth-svg"></svg>
-      </div>
-
-      <div id="depth-tooltip"></div>
-
-      <div id="depth-readout">
-        <p><strong>Depth:</strong> <span id="read-depth">—</span> m</p>
-        <p><strong>CO₂:</strong> <span id="read-co2">—</span> ppm</p>
-        <p><strong>Gas Age:</strong> <span id="read-age">—</span> years</p>
-      </div>
-
-      <div id="selection-stats"></div>
-      <button id="clear-selection">Clear Selection</button>
-
-    </div>
-  </div>
-
-</section>
+    <section id="post-depth">
+      <h1>Transition</h1>
+      <p>
+        Words
+      </p>
+    </section>
 
     <section id="modern-co2">
-      <!-- floating bubbles in the background -->
       <div class="modern-co2-bubbles">
         <span></span><span></span><span></span><span></span><span></span>
         <span></span><span></span><span></span>
       </div>
 
-      <!-- centered content -->
       <div class="modern-co2-inner">
         <h1>So Where Are We Now?</h1>
         <p>
@@ -212,6 +210,14 @@
         </div>
       </div>
     </section>
+
+    <section id="post-modern">
+      <h1>Final Takeaways</h1>
+      <p>
+        Words
+      </p>
+    </section>
+
     <section id="write-up">
       <h1>Write-up (Nov. 25)</h1>
       <p>
@@ -247,4 +253,3 @@
   <script src="modern.js"></script>
 </body>
 </html>
-

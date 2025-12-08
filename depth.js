@@ -109,12 +109,10 @@ function initDepthChart() {
       document.getElementById("drag-hint").style.opacity = 0;
     }, 2500);
   }, 600);
-
 }
 
 function updateCore(core) {
   currentCore = +core;
-
   let data = groupedDepth.get(currentCore);
   if (!data) return;
 
@@ -165,14 +163,13 @@ function startDepthPlayback() {
     slider.value = 0;
     updateDotPosition(0);
   }
-
   if (isPlaying) return;
+
   isPlaying = true;
   playBtn.innerText = "Pause";
 
   playInterval = setInterval(() => {
     let v = +slider.value;
-
     if (v >= +slider.max) {
       stopDepthPlayback(true);
       return;
@@ -186,7 +183,6 @@ function stopDepthPlayback(isFinished = false) {
   isPlaying = false;
   clearInterval(playInterval);
   playInterval = null;
-
   playBtn.innerText = isFinished ? "Replay" : "Play";
 }
 
@@ -195,9 +191,12 @@ playBtn.addEventListener("click", () => {
   else stopDepthPlayback(false);
 });
 
+/* ---------------------------------------------------
+   BRAND NEW TOOLTIP POSITIONING (FIXED)
+--------------------------------------------------- */
 function handleTooltipMove(event) {
   const svgNode = depthSvg.node();
-  const [mx, my] = d3.pointer(event, svgNode);  // SVG space
+  const [mx, my] = d3.pointer(event, svgNode);
 
   const data = groupedDepth.get(currentCore);
   if (!data) return;
@@ -208,8 +207,8 @@ function handleTooltipMove(event) {
   data.forEach(d => {
     const sx = depthX(d.co2);
     const sy = depthY(d.depth);
-
     const dist = Math.hypot(mx - sx, my - sy);
+
     if (dist < minDist) {
       minDist = dist;
       closest = d;
@@ -223,16 +222,13 @@ function handleTooltipMove(event) {
 
   tooltip.style.opacity = 1;
 
-  let leftPos = event.clientX + 15;
-  const tipWidth = tooltip.offsetWidth;
-  const vw = window.innerWidth;
+  const rect = document.getElementById("depth-chart-wrapper").getBoundingClientRect();
 
-  if (event.clientX + tipWidth + 40 > vw) {
-    leftPos = event.clientX - tipWidth - 15;
-  }
+  const tooltipX = event.clientX - rect.left + 120;
+  const tooltipY = event.clientY - 60;
 
-  tooltip.style.left = `${leftPos}px`;
-  tooltip.style.top = `${event.clientY + 15}px`;
+  tooltip.style.left = `${tooltipX}px`;
+  tooltip.style.top = `${tooltipY}px`;  
 
   tooltip.innerHTML = `
     <strong>Depth:</strong> ${closest.depth.toFixed(1)} m<br>
@@ -254,7 +250,6 @@ function initBrush(innerW, innerH) {
 
 function brushed(event) {
   if (!event.selection) return;
-
   const [[x0, y0], [x1, y1]] = event.selection;
 
   d3.select("#selection-rect")
@@ -269,8 +264,8 @@ function brushEnd(event) {
   if (!event.selection) return;
 
   const [[x0, y0], [x1, y1]] = event.selection;
-
   computeSelectionStats(x0, y0, x1, y1);
+
   clearSelectionBtn.style.display = "inline-block";
 }
 
@@ -337,7 +332,7 @@ coreSelect.addEventListener("change", e => {
 
 let dragHintShown = false;
 
-const depthObserver = new IntersectionObserver((entries) => {
+const depthObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !dragHintShown) {
       dragHintShown = true;
