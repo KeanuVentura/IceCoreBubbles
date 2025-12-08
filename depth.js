@@ -26,9 +26,6 @@ let readAge = document.getElementById("read-age");
 
 clearSelectionBtn.style.display = "none";
 
-/* ================================
-   LOAD DATA
-================================ */
 d3.csv("data/dataset1.csv").then(raw => {
   depthData = raw.map(d => ({
     depth: +d.depth,
@@ -42,9 +39,6 @@ d3.csv("data/dataset1.csv").then(raw => {
   updateCore(currentCore);
 });
 
-/* ================================
-   INITIAL CHART BUILD
-================================ */
 function initDepthChart() {
   const svgEl = d3.select("#depth-svg");
 
@@ -118,9 +112,6 @@ function initDepthChart() {
 
 }
 
-/* ================================
-   CORE UPDATE
-================================ */
 function updateCore(core) {
   currentCore = +core;
 
@@ -146,9 +137,6 @@ function updateCore(core) {
   clearSelection();
 }
 
-/* ================================
-   DOT MOTION
-================================ */
 function updateDotPosition(sliderValue) {
   const node = depthPath.node();
   if (!node) return;
@@ -172,9 +160,6 @@ function updateReadout(pos, totalLength) {
   readAge.textContent = d.gasage.toLocaleString();
 }
 
-/* ================================
-   PLAY / PAUSE
-================================ */
 function startDepthPlayback() {
   if (playBtn.innerText === "Replay") {
     slider.value = 0;
@@ -210,9 +195,6 @@ playBtn.addEventListener("click", () => {
   else stopDepthPlayback(false);
 });
 
-/* ================================
-   TOOLTIP
-================================ */
 function handleTooltipMove(event) {
   const svgNode = depthSvg.node();
   const [mx, my] = d3.pointer(event, svgNode);  // SVG space
@@ -259,9 +241,6 @@ function handleTooltipMove(event) {
   `;
 }
 
-/* ================================
-   BRUSH
-================================ */
 function initBrush(innerW, innerH) {
   depthBrush = d3.brush()
     .extent([[0, 0], [innerW, innerH]])
@@ -295,9 +274,6 @@ function brushEnd(event) {
   clearSelectionBtn.style.display = "inline-block";
 }
 
-/* ================================
-   SELECTION STATS
-================================ */
 function computeSelectionStats(x0, y0, x1, y1) {
   const data = groupedDepth.get(currentCore);
 
@@ -324,9 +300,6 @@ function computeSelectionStats(x0, y0, x1, y1) {
   `;
 }
 
-/* ================================
-   CLEAR SELECTION
-================================ */
 function clearSelection() {
   d3.select("#depth-svg").select(".brush").call(depthBrush.move, null);
 
@@ -352,9 +325,6 @@ function clearSelection() {
 
 clearSelectionBtn.addEventListener("click", clearSelection);
 
-/* ================================
-   EVENTS
-================================ */
 slider.addEventListener("input", () => {
   stopDepthPlayback();
   updateDotPosition(+slider.value);
