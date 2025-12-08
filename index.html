@@ -129,68 +129,89 @@
       </p>
     </section>
 
-    <section id="depth-explorer">
-      <div id="depth-explorer-container">
-    
-        <div id="depth-explorer-header">
-          <h2>Interactive Depth Explorer</h2>
-          <p>
-            Move the slider to travel deeper into the ice core.  
-            Switch between cores to compare CO₂ patterns.
-            You can also click and drag on the chart to select a region and view its average CO₂, depth, and age.
-          </p>
-        </div>
-    
-        <div id="depth-explorer-controls">
-          <button id="depth-play-btn">Play</button>
-          <label for="depth-slider">Depth:</label>
-          <input type="range" id="depth-slider" min="0" max="100" value="0" step="0.1">
-    
-          <label for="core-select">Core:</label>
-          <select id="core-select">
-            <option value="3" selected>Core 3</option>
-            <option value="4">Core 4</option>
-          </select>
-        </div>
-    
-        <div id="depth-chart-wrapper">
-          <div id="drag-hint">Click & drag to select a region</div>
-          <svg id="depth-svg"></svg>
-        </div>
+<section id="depth-explorer">
+  
+  <!-- background bubbles -->
+  <div class="depth-bubbles">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
 
-        <div id="depth-tooltip"></div>
-    
-        <div id="depth-readout">
-          <p><strong>Depth:</strong> <span id="read-depth">—</span> m</p>
-          <p><strong>CO₂:</strong> <span id="read-co2">—</span> ppm</p>
-          <p><strong>Gas Age:</strong> <span id="read-age">—</span> years</p>
-        </div>
+  <!-- centered content -->
+  <div class="depth-inner">
+    <div id="depth-explorer-container">
 
-        <div id="selection-stats"></div>
-        <button id="clear-selection">Clear Selection</button>
-    
+      <div id="depth-explorer-header">
+        <h2>Interactive Depth Explorer</h2>
+        <p>
+          Move the slider to travel deeper into the ice core.  
+          Switch between cores to compare CO₂ patterns.
+          You can also click and drag on the chart to select a region and view
+          its average CO₂, depth, and age.
+        </p>
       </div>
-    </section>
+
+      <!-- your existing controls and SVG -->
+      <div id="depth-explorer-controls">
+        <button id="depth-play-btn">Play</button>
+        <label for="depth-slider">Depth:</label>
+        <input type="range" id="depth-slider" min="0" max="100" value="0" step="0.1">
+
+        <label for="core-select">Core:</label>
+        <select id="core-select">
+          <option value="3" selected>Core 3</option>
+          <option value="4">Core 4</option>
+        </select>
+      </div>
+
+      <div id="depth-chart-wrapper">
+        <div id="drag-hint">Click & drag to select a region</div>
+        <svg id="depth-svg"></svg>
+      </div>
+
+      <div id="depth-tooltip"></div>
+
+      <div id="depth-readout">
+        <p><strong>Depth:</strong> <span id="read-depth">—</span> m</p>
+        <p><strong>CO₂:</strong> <span id="read-co2">—</span> ppm</p>
+        <p><strong>Gas Age:</strong> <span id="read-age">—</span> years</p>
+      </div>
+
+      <div id="selection-stats"></div>
+      <button id="clear-selection">Clear Selection</button>
+
+    </div>
+  </div>
+
+</section>
 
     <section id="modern-co2">
-      <h1>So Where Are We Now?</h1>
-      <p>
-        Ice cores show that even the warmest glacial peaks topped out around 
-        <strong>280 ppm</strong> of CO₂. This last view uses modern measurements from 
-        Mauna Loa Observatory (1958–today) to show how quickly we’ve moved beyond 
-        that natural range.
-      </p>
+      <!-- floating bubbles in the background -->
+      <div class="modern-co2-bubbles">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+      </div>
 
-      <div id="modern-co2-layout">
-        <div id="modern-co2-viz"></div>
-        <div id="modern-co2-readout">
-          <p id="modern-co2-main"></p>
-          <p id="modern-co2-sub"></p>
-          <button id="modern-co2-play">Play the record</button>
+      <!-- centered content -->
+      <div class="modern-co2-inner">
+        <h1>So Where Are We Now?</h1>
+        <p>
+          Ice cores show that even the warmest glacial peaks topped out around 
+          <strong>280 ppm</strong> of CO₂. This last view uses modern measurements from 
+          Mauna Loa Observatory (1958–today) to show how quickly we’ve moved beyond 
+          that natural range.
+        </p>
+
+        <div id="modern-co2-layout">
+          <div id="modern-co2-viz"></div>
+          <div id="modern-co2-readout">
+            <p id="modern-co2-main"></p>
+            <p id="modern-co2-sub"></p>
+            <button id="modern-co2-play">Play the record</button>
+          </div>
         </div>
       </div>
     </section>
-
     <section id="write-up">
       <h1>Write-up (Nov. 25)</h1>
       <p>
