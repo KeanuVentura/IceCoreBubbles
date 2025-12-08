@@ -125,7 +125,7 @@ function initChart() {
     .attr("x", width / 2)
     .attr("y", height + 40)
     .attr("text-anchor", "middle")
-    .text("Gas Age (years)");
+    .text("Gas Age (years before 1950)");
 
   // Y axis
   g.append("g")
