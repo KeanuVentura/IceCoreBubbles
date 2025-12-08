@@ -492,3 +492,100 @@ main {
   pointer-events: none;
   z-index: 10;
 }
+
+#modern-co2 {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 12vh 2rem 18vh;
+  text-align: center;
+}
+
+#modern-co2 h1 {
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+}
+
+#modern-co2 p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0.5rem auto 0;
+}
+
+#modern-co2-layout {
+  margin-top: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+#modern-co2-viz {
+  flex: 0 0 60%;
+  min-width: 320px;
+}
+
+#modern-co2-readout {
+  flex: 0 0 30%;
+  min-width: 260px;
+  text-align: left;
+}
+
+#modern-co2-main {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+#modern-co2-sub {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+#modern-co2-play {
+  margin-top: 1rem;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: none;
+  background: #7b1e4b;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#modern-co2-play:hover {
+  background: #a22664;
+}
+
+.modern-axis path,
+.modern-axis line {
+  stroke: #444;
+}
+
+.modern-axis text {
+  font-size: 0.8rem;
+  fill: #444;
+}
+
+.modern-baseline {
+  stroke: #59748f;
+  stroke-dasharray: 4 4;
+}
+
+.modern-baseline-label {
+  fill: #59748f;
+  font-size: 0.8rem;
+}
+
+.modern-line {
+  fill: none;
+  stroke: #b01c3b;
+  stroke-width: 2.4px;
+}
+
+.modern-highlight-dot {
+  fill: #b01c3b;
+  stroke: white;
+  stroke-width: 2px;
+}
