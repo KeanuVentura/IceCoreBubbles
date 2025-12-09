@@ -870,11 +870,11 @@ main {
 }
 
 #modern-co2-viz {
-  flex: 0 1 540px;
+  flex: 0 1 700px;
 }
 
 #modern-co2-readout {
-  flex: 0 1 320px;
+  flex: 0 1 350px;
   text-align: left;
   font-size: 1rem;
   line-height: 1.6;

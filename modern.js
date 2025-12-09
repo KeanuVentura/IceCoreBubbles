@@ -1,8 +1,8 @@
 const NATURAL_PEAK = 280;
 
 const modernMargin = { top: 20, right: 20, bottom: 40, left: 60 };
-const modernWidth  = 540 - modernMargin.left - modernMargin.right;
-const modernHeight = 320 - modernMargin.top - modernMargin.bottom;
+const modernWidth  = 700 - modernMargin.left - modernMargin.right;
+const modernHeight = 420 - modernMargin.top - modernMargin.bottom;
 
 const modernSvg = d3.select("#modern-co2-viz")
   .append("svg")
@@ -110,7 +110,13 @@ d3.csv("data/modern_co2_cleaned.csv", d => ({
   }
 
   // show final year by default
-  formatYearInfo(yearly[yearly.length - 1]);
+    mainText.text(
+    "Press “Play the record” to watch CO₂ rise from 1958 to today."
+  );
+
+  subText.text(
+    "Keep an eye on how far the line climbs above the natural ice-core peak (~280 ppm)."
+  );
 
   function playAnimation() {
     console.log("Play clicked");
