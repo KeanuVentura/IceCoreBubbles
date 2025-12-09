@@ -19,7 +19,7 @@ console.log("modern.js loaded");
 
 d3.csv("data/modern_co2_cleaned.csv", d => ({
   year: +d.year,
-  co2:  +d.deseasonalized          // <-- matches the column name in your CSV
+  co2:  +d.deseasonalized 
 })).then(rows => {
   console.log("Loaded modern CO₂ rows:", rows.length);
 
@@ -40,7 +40,6 @@ d3.csv("data/modern_co2_cleaned.csv", d => ({
     .domain([260, d3.max(yearly, d => d.co2) + 5])
     .range([modernHeight, 0]);
 
-  // axes
   modernSvg.append("g")
     .attr("class", "modern-axis")
     .attr("transform", `translate(0,${modernHeight})`)
@@ -50,7 +49,6 @@ d3.csv("data/modern_co2_cleaned.csv", d => ({
     .attr("class", "modern-axis")
     .call(d3.axisLeft(y).ticks(6));
 
-  // natural-peak baseline
   modernSvg.append("line")
     .attr("class", "modern-baseline")
     .attr("x1", 0)
@@ -65,7 +63,6 @@ d3.csv("data/modern_co2_cleaned.csv", d => ({
     .attr("text-anchor", "end")
     .text("Natural ice-core peak (~280 ppm).");
 
-  // line + path
   const line = d3.line()
     .x(d => x(d.year))
     .y(d => y(d.co2));
@@ -80,7 +77,6 @@ d3.csv("data/modern_co2_cleaned.csv", d => ({
 
   const totalLength = path.node().getTotalLength();
 
-  // highlight dot at start
   const highlight = modernSvg.append("circle")
     .attr("class", "modern-highlight-dot")
     .attr("r", 5)
@@ -90,7 +86,6 @@ d3.csv("data/modern_co2_cleaned.csv", d => ({
     .attr("cx", x(yearly[0].year))
     .attr("cy", y(yearly[0].co2));
 
-  // hide the line initially
   path
     .attr("stroke-dasharray", `${totalLength} ${totalLength}`)
     .attr("stroke-dashoffset", totalLength);
@@ -109,7 +104,6 @@ d3.csv("data/modern_co2_cleaned.csv", d => ({
     );
   }
 
-  // show final year by default
     mainText.text(
     "Press “Play the record” to watch CO₂ rise from 1958 to today."
   );

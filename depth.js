@@ -191,9 +191,6 @@ playBtn.addEventListener("click", () => {
   else stopDepthPlayback(false);
 });
 
-/* ---------------------------------------------------
-   BRAND NEW TOOLTIP POSITIONING (FIXED)
---------------------------------------------------- */
 function handleTooltipMove(event) {
   const svgNode = depthSvg.node();
   const [mx, my] = d3.pointer(event, svgNode);
